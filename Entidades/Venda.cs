@@ -19,5 +19,6 @@ namespace SistemaVenda.Entidades
         public Decimal total { get; set; }
         public Cliente Cliente { get; set; }
         public Usuario Usuario { get; set; }
+        public ICollection<VendaProdutos> Produtos { get; set; }
     }
 }

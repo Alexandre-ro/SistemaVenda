@@ -4,10 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SistemaVenda.DAL;
 
 namespace SistemaVenda
 {
@@ -24,6 +27,13 @@ namespace SistemaVenda
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<ApplicationDbContext>(
+                options => options.UseMySQL("Server=localhost;DataBase=gv;Uid=root;Pwd=private55")
+                );
+
+           services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+           services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
