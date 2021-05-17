@@ -1,5 +1,45 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model List<SistemaVenda.Entidades.Cliente>
+
+<div class="text-center">
+    <div>
+        <h2>Clientes</h2>
+        <div class="float-left">
+            <button onclick="Cadastrar()" type="button" class="btn btn-primary" style="margin-bottom:10px">Adicionar Cliente</button>
+        </div>
+        <table class="table table-striped">
+            <thead style="background-color:#a29bfe; color:aliceblue;">
+                <tr>
+                    <th><b>Código</b></th>
+                    <th><b>Nome</b></th>
+                    <th><b>Celular</b></th>
+                    <th><b>CPF</b></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr onclick="Editar(@item.codigo)" style="cursor:pointer">
+                    <td>@item.codigo.ToString().ToUpper()</td>
+                    <td>@item.nome.ToString().ToUpper()</td>
+                    <td>@item.celular.ToString().ToUpper()</td>
+                    <td>@item.cpf.ToString().ToUpper()</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+
+    function Cadastrar()
+    {
+        window.location = window.origin + "\\Cliente\\Cadastro";
+    }
+
+    function Editar(Codigo)
+    {
+        window.location = window.origin + "\\Cliente\\Cadastro\\" + Codigo;
+    }
+
+</script>

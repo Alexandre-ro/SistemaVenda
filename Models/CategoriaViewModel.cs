@@ -8,7 +8,7 @@ namespace SistemaVenda.Models
 {
     public class CategoriaViewModel
     {
-        public int? codigo { get; set; }
+        public int? codigo { get; set; }        
         
         [Required(ErrorMessage = "O preenchimento da Descrição é obrigatório.")]
         public string descricao { get; set; }
