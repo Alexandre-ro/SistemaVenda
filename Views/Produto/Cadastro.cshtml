@@ -1,5 +1,65 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿<h2>Cadastro de Produtos</h2>
+<hr />
+
+@model ProdutoViewModel
 @{
+    var disabled = (Model.codigo == null) ? "disabled" : string.Empty;
 }
+<form asp-controller="Produto" asp-action="Cadastro" method="post">
+    <input type="hidden" asp-for="codigo" value="@Model.codigo" />
+
+    <div class="form-group">
+        <div class="col-4">
+            <label>Categoria:</label>
+            <select asp-for="codigo_categoria" asp-items="@Model.ListaCategorias" class="form-control"></select>
+            <span asp-validation-for="codigo_categoria" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <div class="col-4">
+                <label>Descrição:</label>
+                <input type="text" asp-for="descricao" value="@Model.descricao" class="form-control" />
+                <span asp-validation-for="descricao" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="col-4">
+                    <label>Quantidade:</label>
+                    <input type="number" asp-for="quantidade" value="@Model.quantidade" class="form-control" />
+                    <span asp-validation-for="quantidade" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-4">
+                        <label>Valor:</label>
+                        <input type="text" asp-for="valor" value="@Model.valor" class="form-control" />
+                        <span asp-validation-for="valor" class="text-danger"></span>
+                    </div>
+
+                    <br />
+                    <div class="col">
+                        <button onclick="Novo()" type="button" class="btn btn-info">Nova</button>
+                        <button type="submit" class="btn btn-success">Gravar</button>
+                        <button onclick="Listagem()" type="button" class="btn btn-warning">Listagem</button>
+                        <button onclick="Excluir(@Model.codigo)" type="button" class="btn btn-danger" @disabled>Excluir</button>
+                    </div>
+                </div>
+</form>
+
+<script>
+
+    function Novo() {
+        window.location = window.origin + "\\Produto\\Cadastro";
+    }
+
+    function Listagem(){
+        window.location = window.origin + "\\Produto";
+    }
+
+    function Excluir(Codigo){
+        window.location = window.origin + "\\Produto\\Excluir\\" + Codigo;
+    }
+</script>
+
+
+
