@@ -11,14 +11,12 @@ namespace SistemaVenda.Entidades
     {
         [Key]
         public int? codigo { get; set; }
-        [ForeignKey("cliente")]
-        public int codigo_cliente { get; set; }
-        [ForeignKey("usuario")]
-        public int codigo_usuario { get; set; }
+        [ForeignKey("Cliente")]
+        public int codigo_cliente { get; set; }    
         public DateTime data_venda { get; set; }
-        public Decimal total { get; set; }
+        public decimal total { get; set; }
         public Cliente Cliente { get; set; }
-        public Usuario Usuario { get; set; }
+       
         public ICollection<VendaProdutos> Produtos { get; set; }
     }
 }
