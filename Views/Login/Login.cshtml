@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["title"] = "Login";
+    Layout = null;
+}
+<link href="~/css/login.css" rel="stylesheet">
+
+@model LoginViewModel
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <h2>Autenticação</h2>
+        <form asp-controller="Login" asp-action="Login" method="post">
+            <input asp-for="Email" type="text" class="fadeIn second"  placeholder="Email">
+            <span asp-validation-for="Email" style="color:red"></span>
+            <input asp-for="Senha" type="password" class="fadeIn third" placeholder="Senha">
+            <span asp-validation-for="Senha" style="color:red"></span>
+            <br />
+            <input type="submit" class="fadeIn fourth" value="Log In">
+            <br />
+            <span style="color:red">@ViewData["ErroLogin"]</span>
+        </form>
+    </div>
+</div>
