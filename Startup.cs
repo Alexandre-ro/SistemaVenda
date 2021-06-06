@@ -29,7 +29,7 @@ namespace SistemaVenda
             services.AddControllersWithViews();
 
             services.AddDbContext<ApplicationDbContext>(
-                options => options.UseMySQL("Server=localhost;DataBase=gv;Uid=root;Pwd=private55")
+                options => options.UseMySQL(Configuration.GetConnectionString("MyStock"))
                 );
 
            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
