@@ -32,7 +32,7 @@ namespace SistemaVenda
                 options => options.UseMySQL(Configuration.GetConnectionString("MyStock"))
                 );
 
-           services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+           services.AddHttpContextAccessor(); 
            services.AddSession();
         }
 
